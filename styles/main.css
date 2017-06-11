@@ -28,7 +28,7 @@ html {
          padding-left: 1rem;
          padding-right: 1rem;
           }
-          
+
  .column.full { width: 100%; }
  .column.two-thirds { width: 66.7%; }
  .column.half { width: 50%; }
@@ -40,4 +40,13 @@ html {
  /* Large screens (1024px) */
  @media (min-width: 1024px) {
      html { font-size: 120%; }
+ }
+ .clearfix::before,
+ .clearfix::after {
+    content: " ";
+    display: table;
+ }
+
+ .clearfix::after {
+    clear: both;
  }
