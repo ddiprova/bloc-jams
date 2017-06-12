@@ -8,9 +8,10 @@ body.landing {
 }
 
 .navbar .logo {
-    position: relative; /* positioning will be explained in a resource */
+    position: relative;  /* positioning will be explained in a resource */
     left: 2rem;
 }
+
 .hero-content {
      position: relative; /* positioning will be explained in a resource */
      min-height: 600px;  /* hero content element must be _at least_ 600 pixels */
