@@ -18,6 +18,7 @@ window.onload = function() {
   var sellingPoints = document.getElementsByClassName('selling-points')[0];
   var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
   window.addEventListener('scroll', function(event) {
+    console.log(event);
     if (document.documentElement.scrollTop || document.body.scrollTop >= scrollDistance) {
               animatePoints(pointsArray);
           }
