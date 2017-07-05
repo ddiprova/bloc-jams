@@ -26,6 +26,21 @@ var albumMarconi = {
         { title: 'Wrong phone number', duration: '2:15'}
     ]
 };
+var albumEinstein = {
+    title: 'Theory of Relativity',
+    artist: 'Albert Einstein',
+    label: 'Nuclear',
+    year: '1945',
+    albumArtUrl: 'assets/images/album_covers/11.png',
+    songs: [
+        { title: 'e=mc2', duration: '4:01' },
+        { title: 'The Big One', duration: '3:22' },
+        { title: 'Fat Man', duration: '2:21' },
+        { title: 'Little Boy', duration: '4:43'},
+        { title: 'Ode to Oppenheimer', duration: '3:32'}
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
        '<tr class="album-view-song-item">'
@@ -37,13 +52,14 @@ var createSongRow = function(songNumber, songName, songLength) {
 
     return template;
 };
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 var setCurrentAlbum = function(album) {
 
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
-     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-     var albumImage = document.getElementsByClassName('album-cover-art')[0];
-     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
 
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
@@ -59,4 +75,14 @@ var setCurrentAlbum = function(album) {
 
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+
+     var albums = [albumPicasso, albumMarconi, albumEinstein];
+     var index = 1;
+     albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[index]);
+        index++;
+        if (index == albums.length) {
+            index = 0;
+        }
+      });
  };
