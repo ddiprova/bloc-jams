@@ -72,15 +72,23 @@ albumSongList.innerHTML = '';
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
+
  var findParentByClassName = function(element, targetClass) {
-     if (element) {
-         var currentParent = element.parentElement;
-         while (currentParent.className !== targetClass && currentParent.className !== null) {
-               currentParent = currentParent.parentElement;
+   if (element) {
+     var currentParent = element.parentElement;
+    if (currentParent == null) {
+      	 return console.log("No parent found");
+     } else {
+    	   while (currentParent.className !== targetClass && currentParent.className !== null) {
+        	 currentParent = currentParent.parentElement;
+       		 if  (currentParent == null) {
+        		   return console.log("No parent found with that class name");
+         }
+         return currentParent;
        }
-          return currentParent;
-        }
-   };
+     }
+   }
+ };
 
    var getSongItem = function(element) {
        switch (element.className) {
