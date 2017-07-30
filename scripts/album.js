@@ -82,17 +82,12 @@ albumSongList.innerHTML = '';
         }
          while (currentParent.className !== targetClass && currentParent.className !== null) {
                currentParent = currentParent.parentElement;
-<<<<<<< HEAD
-=======
         }
                if (currentParent == null) {
                   return("No parent found with that class name");
                }
            return currentParent;
->>>>>>> assignment-13-scripting
        }
-          return currentParent;
-        }
    };
 
    var getSongItem = function(element) {
