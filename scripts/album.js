@@ -73,6 +73,7 @@ albumSongList.innerHTML = '';
      }
  };
 
+
  var findParentByClassName = function(element, targetClass) {
      if (element) {
          var currentParent = element.parentElement;
