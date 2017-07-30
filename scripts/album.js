@@ -72,12 +72,19 @@ albumSongList.innerHTML = '';
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
+
  var findParentByClassName = function(element, targetClass) {
      if (element) {
          var currentParent = element.parentElement;
+         if  (currentParent == null) {
+              return("No parent found");
+        }
          while (currentParent.className !== targetClass && currentParent.className !== null) {
                currentParent = currentParent.parentElement;
-           }
+        }
+               if (currentParent == null) {
+                  return("No parent found with that class name");
+               }
            return currentParent;
        }
    };
@@ -113,7 +120,7 @@ albumSongList.innerHTML = '';
              currentlyPlayingSong = songItem.getAttribute('data-song-number');
          }
        };
-       
+
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 var songRows = document.getElementsByClassName('album-view-song-item');
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
