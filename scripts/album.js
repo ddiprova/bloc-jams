@@ -72,11 +72,24 @@ albumSongList.innerHTML = '';
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
+
+
  var findParentByClassName = function(element, targetClass) {
      if (element) {
          var currentParent = element.parentElement;
+         if  (currentParent == null) {
+              return("No parent found");
+        }
          while (currentParent.className !== targetClass && currentParent.className !== null) {
                currentParent = currentParent.parentElement;
+<<<<<<< HEAD
+=======
+        }
+               if (currentParent == null) {
+                  return("No parent found with that class name");
+               }
+           return currentParent;
+>>>>>>> assignment-13-scripting
        }
           return currentParent;
         }
