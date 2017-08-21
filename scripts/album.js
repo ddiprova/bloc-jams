@@ -189,15 +189,16 @@ var previousSong = function() {
 };
 
 var togglePlayFromPlayerBar = function() {
+  var $songNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
   if (currentlyPlayingSongNumber !== null) {
       if  (currentSoundFile.isPaused()) {
-        $(this).html(pauseButtonTemplate);
-    //      songNumberCell.html(pauseButtonTemplate);
+    //    $(this).html(pauseButtonTemplate);
+          $songNumberCell.html(pauseButtonTemplate);
           $('.main-controls .play-pause').html(playerBarPauseButton);
             currentSoundFile.play();
           } else  {
-                $(this).html(playButtonTemplate);
-          //      songNumberCell.html(playButtonTemplate);
+          //      $(this).html(playButtonTemplate);
+                $songNumberCell.html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
                 currentSoundFile.pause();
       }
