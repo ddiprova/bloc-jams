@@ -35,7 +35,7 @@ var createSongRow = function(songNumber, songName, songLength) {
        '<tr class="album-view-song-item">'
      + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
      + '  <td class="song-item-title">' + songName + '</td>'
-     + '  <td class="song-item-duration">' + songLength + '</td>'
+     + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'       //a21
      + '</tr>'
      ;
 
@@ -134,9 +134,28 @@ var setCurrentAlbum = function(album) {
             var $seekBar = $('.seek-control .seek-bar');
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
+            var currentTime = currentSoundFile.getTime();
+            setCurrentTimeInPlayerBar(filterTimeCode(currentTime))  //a21
         });
     }
   };
+     var setCurrentTimeInPlayerBar = function(currentTime) {    //a21
+         $('.current-time').text(currentTime);                  //a21
+     }                                                          //a21
+
+     var setTotalTimeInPlayerBar = function(totalTime)  {       //a21
+          $('.total-time').text(totalTime);                     //a21
+     }                                                          //a21
+
+      var filterTimeCode = function(timeInSeconds) {            //a21
+          var totalSecs = parseFloat(timeInSeconds);            //a21
+          var minutes = Math.floor(totalSecs / 60);             //a21
+          var seconds = Math.floor(totalSecs % 60);             //a21
+          if  (seconds < 10) {                                  //a21
+              seconds = '0' + seconds;                          //a21
+          }                                                     //a21
+          return minutes + ':' + seconds;                       //a21
+      }                                                         //a21
 
     var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
@@ -226,7 +245,9 @@ var setCurrentAlbum = function(album) {
      $('.currently-playing .song-name').text(currentSongFromAlbum.title);
      $('.currently-playing .artist-name').text(currentAlbum.artist);
      $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
-     $('.main-controls .play-pause').html(playerBarPauseButton);
+     var totalTime = currentSongFromAlbum.duration;
+
+     setTotalTimeInPlayerBar(filterTimeCode(totalTime));        //a21
  };
 
 
