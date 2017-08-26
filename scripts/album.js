@@ -245,8 +245,8 @@ var setCurrentAlbum = function(album) {
      $('.currently-playing .song-name').text(currentSongFromAlbum.title);
      $('.currently-playing .artist-name').text(currentAlbum.artist);
      $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
-     var totalTime = currentSongFromAlbum.duration;
-
+      $('.main-controls .play-pause').html(playerBarPauseButton);        //a21
+     var totalTime = currentSongFromAlbum.duration;    
      setTotalTimeInPlayerBar(filterTimeCode(totalTime));        //a21
  };
 
